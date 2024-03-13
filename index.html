@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Codecraft</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js/index.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <img src="images/stars-main.svg">
+        <img class="krutilka" style="top: ;" src="images/krutilka.gif" alt="">
+    </div>
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="images/header-logo-start.svg" alt="CODE"/>
+                <img src="images/header-logo-end.svg" alt="CRAFT"/>
+            </div>
+            <div>
+                <img src="images/polosochki.svg" alt="MENU">
+            </div>
+        </div>
+    </header>
+    <div class="start">
+        <div class="start-block">
+            <div>
+                <img src="images/CodeCraft.svg" alt="CodeCraft">
+                <p>Реализуем то, <br>что меняет будущее</p>
+            </div>
+            <a href="#contacts" class="hover-button"><p>Связаться</p><span><img src="images/link-arrow.svg" alt="arrow"></span></a>
+        </div>
+    </div>
+    <div class="about-me">
+        <h1>
+            вы думаете, а мы делаем
+        </h1>
+        <ul>
+            <li>Наша команда состоит из зарекомендовавших себя специалистов имеющих более 10 лет коммерческого опыта.</li>
+            <li>За нашими плечами стоит работа с компаниями уровня ТОП-3 по России и Казахстану. Мы имеем опыт работы как с коммерческими так и государственными структурами.</li>
+            <li>Наша команда работала на проектах Мегафон, VK, делала дополнительные элементы автоматизации для работы Digital агентств.</li>
+            <li>Наша команда реализовала более 50 проектов различной сложности и направленности. Мы разрабатывали сайты, мобильные приложения и системы автоматизации на основе нейронных сетей.</li>
+        </ul>
+    </div>
+    <div class="cases">
+        <div style="width: 100%; overflow: hidden">
+            <h1 class="cases-heading">
+                наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>наши кейсы<span><div class="our-cases-line"></div></span>
+            </h1>
+        </div>
+        <div class="cases-body">
+            <div>
+                <div class="case">
+                    <img src="images/cases/web-rq.svg" alt="WEB RQ-Agency">
+                    <p class="cases-text-anim">Создание сайта RQ Agency бренд в группе международного digital-агентства AMDG с фокусом на Digital PR.</p>
+                    <div class="cases-variables">
+                        <div class="case-variables">Аналитика</div>
+                        <div class="case-variables">Дизайн</div>
+                        <div class="case-variables">Разработка</div>
+                    </div>
+                </div>
+            </div>
+            <a href="" class="hover-button"><p>Посмотреть работы</p><span><img src="images/link-arrow.svg" alt="arrow"></span></a>
+        </div>
+    </div>
+    <!--<script src="https://code.jquery.com/jquery-4.0.0-beta.min.js"></script>
+    <script>
+        var current = $(window).scrollTop();
+        var total = $(window).height() - current;
+        var ele = $(".krutilka");
+        var currPosition = ele.position().top;
+        var trackLength = 300;
+        $(window).scroll(function (event) {
+            current = $(window).scrollTop();
+            console.log({total:total,current:current});
+            console.log(current/total * 100);
+            var newPosition = trackLength * (current/total)
+            ele.css({top:currPosition+newPosition*3+'px'});
+        });
+    </script>-->
+</body>
+</html>
