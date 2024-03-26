@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Codecraft | 404 page not found</title>
+    <link rel="stylesheet" href="404.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <a href="index.html"><img src="images/404/logo.svg" alt="CODECRAFT"></a>
+            <div class="hd-socials">
+                <a href=""><img src="images/404/vk.svg" alt="VK"></a>
+                <a href=""><img src="images/404/vc.svg" alt="VC.RU"></a>
+            </div>
+            <div class="follow-cursor"></div>
+        </div>
+    </header>
+    <div class="nf404">
+        <h1>404</h1>
+        <p>THE PAGE ARE YOU LOOKING FOR DOESN’T EXIST</p>
+        <a href="index.html"><p>Вернуться на главную</p></a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function onScroll(e) {
+                el.style.top = e.pageY + 'px' // задаём элементу позиционирование сверху
+            }
+            const followCursor = () => { // объявляем функцию followCursor
+                const el = document.querySelector('.follow-cursor') // ищем элемент, который будет следовать за курсором
+
+                window.addEventListener('mousemove', e => { // при движении курсора
+                    const target = e.target // определяем, где находится курсор
+                    const elements = [
+                        'a',
+                        'p',
+                        'img',
+                        'li',
+                        '.case-variable',
+                        '.cases-text-anim',
+                        '.divline',
+                        'input',
+                        'label',
+                        'span',
+                        'h1',
+                        '.form-title',
+                        'textarea'
+                    ]
+                    if (!target) return
+                    if (target.closest(elements)) { // если курсор наведён на ссылку
+                        el.classList.add('follow-cursor_active') // элементу добавляем активный класс
+                    } else { // иначе
+                        el.classList.remove('follow-cursor_active') // удаляем активный класс
+                    }
+                    if (target.closest('footer')){
+                        el.classList.add('follow-cursor-footer')
+                        if (target.closest(elements)) { // если курсор наведён на ссылку
+                            el.classList.add('follow-cursor-footer_active') // элементу добавляем активный класс
+                        } else { // иначе
+                            el.classList.remove('follow-cursor-footer_active') // удаляем активный класс
+                        }
+                    }
+                    else{
+                        el.classList.remove('follow-cursor-footer')
+                    }
+                    if (document.body.scrollHeight > window.innerHeight) {
+                        el.style.left = e.pageX + 'px' // задаём элементу позиционирование слева
+                        el.style.top = e.pageY + 'px' // задаём элементу позиционирование сверху
+                    } else {
+                        el.style.left = e.pageX + 'px' // задаём элементу позиционирование слева
+                        el.style.top = e.pageY + 'px' // задаём элементу позиционирование сверху
+                    }
+                })
+            }
+
+            followCursor() // вызываем функцию followCursor
+
+        })
+    </script>
+</body>
+</html>
