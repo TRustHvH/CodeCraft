@@ -1204,7 +1204,7 @@ input:-webkit-autofill{
     position: fixed;
     top: 0;
     right: 0;
-    padding: 36px 72px 0 0;
+    padding: 26px 72px 0 0;
 }
 .popup-menu a{
     color: white;
@@ -1280,6 +1280,7 @@ input:-webkit-autofill{
     }
     .krutilka{
         width: 800px;
+        top: 50px;
     }
     .start{
         background-size: contain;
