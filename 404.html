@@ -5,6 +5,7 @@
     <title>Codecraft | 404 page not found</title>
     <link rel="stylesheet" href="404.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -24,9 +25,6 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            function onScroll(e) {
-                el.style.top = e.pageY + 'px' // задаём элементу позиционирование сверху
-            }
             const followCursor = () => { // объявляем функцию followCursor
                 const el = document.querySelector('.follow-cursor') // ищем элемент, который будет следовать за курсором
 
