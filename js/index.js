@@ -161,14 +161,14 @@ $(window).scroll(function (event) {
     $(".krutilka, .container, .start").css('transition', 'all 0.1s ease');
     current = $(window).scrollTop();
     let new_position = track_length * (current / total);
-    let animation = current * 0.124 + 'vw'; // Используем vw для адаптивной анимации
-    let new_size = 1438 - current * (580 / $(document).height()) * 10; // Изменение размера krutilka
+    let animation = Math.round(current / 800 * 100)  + '%'
+    let new_size = Math.round(1438 - current * (580 / $(document).height()) * 10); // Изменение размера krutilka
     let new_blur = current * (8 / $(document).height()) * 8.5; // Изменение уровня размытия
     // Конвертация значения top из px в vw
     let top_in_vw = (curr_position + new_position * 4.90) / $(window).width() * 100;
 
     if ($(window).scrollTop() <= 800) {
-        $(".krutilka").css({top: top_in_vw + 'vw', width: new_size + 'px', height: new_size + 'px', filter: "blur(" + (8 - new_blur) + "px)", transform: "translateX(calc(" + animation + "/5)"});
+        $(".krutilka").css({top: top_in_vw + 'vw', width: new_size + 'px', height: new_size + 'px', filter: "blur(" + (8 - new_blur) + "px)", transform: "translateX(calc(" + animation + "/2)"});
         $(".container").css({transform: "translateX(-100%) translateX(" + animation + ")"});
         $(".start").css({transform: "translateX(0%) translateX(" + animation + ")"});
     }
