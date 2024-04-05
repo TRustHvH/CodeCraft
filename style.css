@@ -331,6 +331,7 @@ header{
     overflow:hidden;
     position: relative;
     z-index: 3;
+    transform: translateX(-100%) translateX(0%);
 }
 .header{
     width: 100%;
@@ -378,6 +379,7 @@ header{
     align-items: center;
     position: relative;
     z-index: 2;
+    transform: translateX(0%) translateX(0%);
 }
 .start-block div p{
     font-family: "Gerhaus Regular", sans-serif;
@@ -597,7 +599,7 @@ header{
     display: flex;
     gap: 32px;
     flex-wrap: wrap;
-    height: 978px;
+    height: 1000px;
     justify-content: center;
     overflow-y: scroll;
     width: fit-content;
@@ -630,6 +632,7 @@ header{
     letter-spacing: 0;
     text-align: left;
     transition: .2s linear;
+    margin: 26px 12px 0 0;
 }
 .case:hover .case-date{
     transform: translateY(52px);
@@ -1137,7 +1140,7 @@ footer .address .main-address, .number-email{
     height: 0;
     border-radius: 50%;
     transform: translateY(-50%) translateX(-50%);
-    position: absolute;
+    position: fixed;
     z-index: 1;
     pointer-events: none;
     transition: box-shadow 0.64s, -webkit-box-shadow 0.64s, -moz-box-shadow 0.64s;
@@ -1177,7 +1180,63 @@ input:-webkit-autofill{
 .popup-opening:hover{
     gap: 24px;
 }
-
+.popup-links{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: calc(100% - 120px);
+    gap: 71px
+}
+.link1:hover, .link2:hover, .link3:hover, .link4:hover{
+    opacity: 0;
+}
+.popup-links-absolute{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 71px;
+    transform: translateY(-127px);
+    pointer-events: none;
+}
+.popup-links-absolute > a:nth-child(n){
+    opacity: 0;
+}
+@keyframes popup-links-anim {
+    0%{
+        transform: translateX(92%);
+    }
+    50%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+}
+@keyframes popup-links-anim1 {
+    0%{
+        transform: translateX(82%);
+    }
+    50%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+}
+.popup-links .link1:hover ~ .popup-links-absolute > a:nth-child(1)
+{
+    opacity: 1;
+    animation: popup-links-anim 10s ease;
+}
+.popup-links .link2:hover ~ .popup-links-absolute > a:nth-child(2),
+.popup-links .link3:hover ~ .popup-links-absolute > a:nth-child(3),
+.popup-links .link4:hover ~ .popup-links-absolute > a:nth-child(4){
+    opacity: 1;
+    animation: popup-links-anim1 10s ease;
+}
 @keyframes popup-anim-open {
    from{
        transform: translateX(100%);
@@ -1205,6 +1264,7 @@ input:-webkit-autofill{
     top: 0;
     right: 0;
     padding: 26px 72px 0 0;
+    overflow: hidden;
 }
 .popup-menu a{
     color: white;
@@ -1214,6 +1274,9 @@ input:-webkit-autofill{
     line-height: 55px;
     letter-spacing: 0;
     text-decoration: none;
+    display: flex;
+    gap: 64px;
+    width: max-content;
 }
 .popup-open{
     animation: popup-anim-open .2s linear;
@@ -1221,13 +1284,32 @@ input:-webkit-autofill{
 .popup-close{
     animation: popup-anim-close .2s linear;
 }
+.popup-x{
+    transform: rotate(0deg);
+    transition: .2s ease;
+}
+.popup-x:hover{
+    transform: rotate(360deg);
+}
 .follow-cursor-header{
+    z-index: 15;
+    box-shadow: 0 0 100px 59px rgb(255, 255, 255);
+    -webkit-box-shadow: 0 0 100px 59px rgb(255, 255, 255);
+    -moz-box-shadow: 0 0 100px 59px rgb(255, 255, 255);
+}
+.follow-cursor-header_active{
+    z-index: 15;
+    box-shadow: 0 0 100px 101px rgb(255, 255, 255);
+    -webkit-box-shadow: 0 0 100px 101px rgb(255, 255, 255);
+    -moz-box-shadow: 0 0 100px 101px rgb(255, 255, 255);
+}
+.follow-cursor-popup{
     z-index: 15;
     box-shadow: 0 0 100px 59px rgba(00,00,00,1);
     -webkit-box-shadow: 0 0 100px 59px rgba(00,00,00,1);
     -moz-box-shadow: 0 0 100px 59px rgba(00,00,00,1);
 }
-.follow-cursor-header_active{
+.follow-cursor-popup_active{
     z-index: 15;
     box-shadow: 0 0 100px 101px rgba(00,00,00,1);
     -webkit-box-shadow: 0 0 100px 101px rgba(00,00,00,1);
@@ -1258,7 +1340,14 @@ input:-webkit-autofill{
     background: black;
     font-family: 'Azeret Mono', monospace;
 }
-
+@media screen and (max-width: 1280px){
+    .start{
+        transform: unset;
+    }
+    .container{
+        transform: unset;
+    }
+}
 @media screen and (max-width: 1080px){
     .form textarea{
         width: 100%;
@@ -1334,7 +1423,6 @@ input:-webkit-autofill{
         align-items: center;
     }
     .case-date{
-        margin: 0;
         line-height: unset;
     }
     .case:hover .case-img{

@@ -3,9 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     /*********Cursor*********/
     const follow_cursor = () => { // объявляем функцию followCursor
         const el = document.querySelector('.follow-cursor') // ищем элемент, который будет следовать за курсором
-        /*window.addEventListener("scroll", () =>{
-            el.style.top = window.scrollY + "px"
-        })*/
         window.addEventListener('mousemove',(e) => { // при движении курсора
             const target = e.target // определяем, где находится курсор
             const elements = [
@@ -15,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 'li',
                 '.case-variable',
                 '.cases-text-anim',
-                '.divline',
                 'input',
                 'label',
                 'span',
@@ -30,6 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
             } else { // иначе
                 el.classList.remove('follow-cursor_active') // удаляем активный класс
             }
+            if(target.closest('header')){
+                el.classList.add('follow-cursor-header')
+                if (target.closest(elements)) { // если курсор наведён на ссылку
+                    el.classList.add('follow-cursor-header_active') // элементу добавляем активный класс
+                } else { // иначе
+                    el.classList.remove('follow-cursor-header_active') // удаляем активный класс
+                }
+            }
+            else{
+                el.classList.remove('follow-cursor-header')
+            }
             if (target.closest('footer')){
                 el.classList.add('follow-cursor-footer')
                 if (target.closest(elements)) { // если курсор наведён на ссылку
@@ -42,18 +49,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.classList.remove('follow-cursor-footer')
             }
             if(target.closest(".popup-menu")){
-                el.classList.add("follow-cursor-header")
+                el.classList.add("follow-cursor-popup")
                 if (target.closest(elements)) { // если курсор наведён на ссылку
-                    el.classList.add('follow-cursor-header_active') // элементу добавляем активный класс
+                    el.classList.add('follow-cursor-popup_active') // элементу добавляем активный класс
                 } else { // иначе
-                    el.classList.remove('follow-cursor-header_active') // удаляем активный класс
+                    el.classList.remove('follow-cursor-popup_active') // удаляем активный класс
                 }
             }
             else{
-                el.classList.remove("follow-cursor-header")
+                el.classList.remove("follow-cursor-popup")
             }
             el.style.left = e.pageX + 'px' // задаём элементу позиционирование слева
-            el.style.top = e.pageY + 'px' // задаём элементу позиционирование сверху
+            el.style.top = e.clientY + 'px' // задаём элементу позиционирование сверху
         })
     }
     follow_cursor()
@@ -151,6 +158,13 @@ let current = $(window).scrollTop();
 let total = $(window).height() - current;
 let curr_position = -247.5;
 let track_length = 300;
+window.addEventListener("DOMContentLoaded", () => {
+    if ($(window).scrollTop() >= 800 && window.innerWidth < 1280) {
+        $(".krutilka").css({top: 76.1 + 'vw', width: 587 + 'px', height: 587 + 'px', filter: "blur(0px)", transform: "translateX(calc(50%)"});
+        $(".container").css({transform: "translateX(-100%) translateX(100%)"});
+        $(".start").css({transform: "translateX(0%) translateX(100%)"});
+    }
+})
 $(window).scroll(function (event) {
     if ($(window).scrollTop() >= 800/* && $(window).scrollTop() < 1400*/) {
         $("header").addClass("header-bg");
