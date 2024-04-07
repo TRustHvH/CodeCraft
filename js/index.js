@@ -18,24 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 'h1',
                 '.form-title',
                 'textarea',
-                '.popup-menu a'
+                '.popup-menu a',
+                
             ]
             if (!target) return
             if (target.closest(elements)) { // если курсор наведён на ссылку
                 el.classList.add('follow-cursor_active') // элементу добавляем активный класс
             } else { // иначе
                 el.classList.remove('follow-cursor_active') // удаляем активный класс
-            }
-            if(target.closest('header')){
-                el.classList.add('follow-cursor-header')
-                if (target.closest(elements)) { // если курсор наведён на ссылку
-                    el.classList.add('follow-cursor-header_active') // элементу добавляем активный класс
-                } else { // иначе
-                    el.classList.remove('follow-cursor-header_active') // удаляем активный класс
-                }
-            }
-            else{
-                el.classList.remove('follow-cursor-header')
             }
             if (target.closest('footer')){
                 el.classList.add('follow-cursor-footer')
@@ -84,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animateElements(document.querySelectorAll('.word'), "word-anim");
     animateElements(document.querySelectorAll('.company'), "comp-anim")
-    animateElements(document.querySelectorAll(".form-title"), "form-titled")
+    animateElements(document.querySelectorAll("form"), "form-titled")
     animateElements(document.querySelectorAll(".case"), "comp-anim")
 
 
@@ -158,13 +148,13 @@ let current = $(window).scrollTop();
 let total = $(window).height() - current;
 let curr_position = -247.5;
 let track_length = 300;
-window.addEventListener("DOMContentLoaded", () => {
+/*window.addEventListener("DOMContentLoaded", () => {
     if ($(window).scrollTop() >= 800 && window.innerWidth < 1280) {
         $(".krutilka").css({top: 76.1 + 'vw', width: 587 + 'px', height: 587 + 'px', filter: "blur(0px)", transform: "translateX(calc(50%)"});
         $(".container").css({transform: "translateX(-100%) translateX(100%)"});
         $(".start").css({transform: "translateX(0%) translateX(100%)"});
     }
-})
+})*/
 $(window).scroll(function (event) {
     if ($(window).scrollTop() >= 800/* && $(window).scrollTop() < 1400*/) {
         $("header").addClass("header-bg");

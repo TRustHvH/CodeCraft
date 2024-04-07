@@ -311,9 +311,11 @@ body{
 }
 *{
     text-rendering: optimizeLegibility;
+    cursor: none!important;
 }
 html{
     scroll-behavior: smooth;
+
 }
 header{
     width: 100%;
@@ -599,7 +601,7 @@ header{
     display: flex;
     gap: 32px;
     flex-wrap: wrap;
-    height: 1000px;
+    height: 100%;
     justify-content: center;
     overflow-y: scroll;
     width: fit-content;
@@ -915,6 +917,11 @@ header{
 .form .buttons input[type='checkbox'] {
     display:none;
 }
+input[type= "number"]::-webkit-inner-spin-button, input[type= "number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .form .buttons input[type='checkbox'] + label {
     display:inline-block;
     background-color:transparent;
@@ -977,13 +984,28 @@ header{
     text-align: left;
     width: 100%;
     box-sizing: border-box;
+    height: 52px;
+}
+.form input:hover{
+    border-width: 2px 2px;
+    border-color: rgb(253, 36, 54);
+}
+.form textarea:hover{
+    border: 2px solid rgb(253, 36, 54);
+}
+.form input:focus{
+    border-width: 2px 2px;
+    border-color: rgb(253, 36, 54);
+}
+.form textarea:focus{
+    border: 2px solid rgb(253, 36, 54);
 }
 .form textarea{
     all: unset;
     border: none;
     border-bottom: 2px solid rgb(253, 36, 54);
     width: 226px;
-    height: 103px;
+    height: 104px;
     resize: both;
     padding: 16px;
     color: rgb(177, 177, 177);
@@ -994,6 +1016,18 @@ header{
     letter-spacing: 0.16px;
     text-align: left;
     overflow-wrap: anywhere;
+}
+.form ::-webkit-input-placeholder{
+    color: rgb(177, 177, 177);
+    font-family: "IBM Plex Sans";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.16px;
+    text-align: left;
+}
+.form textarea::-webkit-input-placeholder{
+    max-width: 150px;
 }
 .form .input-checkbox{
     display: flex;
@@ -1044,18 +1078,6 @@ header{
     line-height: 18px;
     letter-spacing: 0.02px;
     text-align: left;
-}
-.form ::-webkit-input-placeholder{
-    color: rgb(177, 177, 177);
-    font-family: "IBM Plex Sans";
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 18px;
-    letter-spacing: 0.16px;
-    text-align: left;
-}
-.form textarea::-webkit-input-placeholder{
-    max-width: 150px;
 }
 @keyframes form-title-anim {
     0%{
@@ -1125,6 +1147,11 @@ footer .address .main-address, .number-email{
     letter-spacing: 0.02px;
     text-align: left;
     max-width: 338px;
+    text-decoration: none;
+}
+footer .address div{
+    display: flex;
+    gap: 10px;
 }
 @keyframes opacity-anim {
     0%{
@@ -1136,34 +1163,30 @@ footer .address .main-address, .number-email{
 }
 .follow-cursor {
     display: block;
-    width: 0;
-    height: 0;
+    width: 16px;
+    height: 16px;
+    border: 2px solid;
+    border-color: rgb(253, 36, 54);
+    background: transparent;
     border-radius: 50%;
     transform: translateY(-50%) translateX(-50%);
     position: fixed;
-    z-index: 1;
+    z-index: 9999;
     pointer-events: none;
-    transition: box-shadow 0.64s, -webkit-box-shadow 0.64s, -moz-box-shadow 0.64s;
-    box-shadow: 0 0 100px 59px rgba(255,255,255,1);
-    -webkit-box-shadow: 0 0 100px 59px rgba(255,255,255,1);
-    -moz-box-shadow: 0 0 100px 59px rgba(255,255,255,1);
+    transition: width 0.64s, height 0.64s, border-color 0.64s;
+
 }
 .follow-cursor_active {
-    box-shadow: 0 0 100px 101px rgba(255,255,255,1);
-    -webkit-box-shadow: 0 0 100px 101px rgba(255,255,255,1);
-    -moz-box-shadow: 0 0 100px 101px rgba(255,255,255,1);
+    width: 36px;
+    height: 36px;
 }
 .follow-cursor-footer{
-    box-shadow: 0 0 100px 59px rgba(00,00,00,1);
-    -webkit-box-shadow: 0 0 100px 59px rgba(00,00,00,1);
-    -moz-box-shadow: 0 0 100px 59px rgba(00,00,00,1);
-    z-index: 3;
+    border: 2px solid;
+    border-color: black;
 }
 .follow-cursor-footer_active{
-    box-shadow: 0 0 100px 101px rgba(00,00,00,1);
-    -webkit-box-shadow: 0 0 100px 101px rgba(00,00,00,1);
-    -moz-box-shadow: 0 0 100px 101px rgba(0,00,00,1);
-    z-index: 3;
+    width: 36px;
+    height: 36px;
 }
 input:-webkit-autofill{
     -webkit-box-shadow:0 0 0 50px rgb(0,0,0) inset;
@@ -1206,24 +1229,24 @@ input:-webkit-autofill{
 }
 @keyframes popup-links-anim {
     0%{
+        transform: translateX(91%);
+    }
+    50%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(91%);
+    }
+}
+@keyframes popup-links-anim1 {
+    0%{
         transform: translateX(92%);
     }
     50%{
         transform: translateX(0%);
     }
     100%{
-        transform: translateX(100%);
-    }
-}
-@keyframes popup-links-anim1 {
-    0%{
-        transform: translateX(82%);
-    }
-    50%{
-        transform: translateX(0%);
-    }
-    100%{
-        transform: translateX(100%);
+        transform: translateX(92%);
     }
 }
 .popup-links .link1:hover ~ .popup-links-absolute > a:nth-child(1)
@@ -1291,32 +1314,18 @@ input:-webkit-autofill{
 .popup-x:hover{
     transform: rotate(360deg);
 }
-.follow-cursor-header{
-    z-index: 15;
-    box-shadow: 0 0 100px 59px rgb(255, 255, 255);
-    -webkit-box-shadow: 0 0 100px 59px rgb(255, 255, 255);
-    -moz-box-shadow: 0 0 100px 59px rgb(255, 255, 255);
-}
-.follow-cursor-header_active{
-    z-index: 15;
-    box-shadow: 0 0 100px 101px rgb(255, 255, 255);
-    -webkit-box-shadow: 0 0 100px 101px rgb(255, 255, 255);
-    -moz-box-shadow: 0 0 100px 101px rgb(255, 255, 255);
-}
 .follow-cursor-popup{
-    z-index: 15;
-    box-shadow: 0 0 100px 59px rgba(00,00,00,1);
-    -webkit-box-shadow: 0 0 100px 59px rgba(00,00,00,1);
-    -moz-box-shadow: 0 0 100px 59px rgba(00,00,00,1);
+    border: 2px solid;
+    border-color: white;
 }
 .follow-cursor-popup_active{
-    z-index: 15;
-    box-shadow: 0 0 100px 101px rgba(00,00,00,1);
-    -webkit-box-shadow: 0 0 100px 101px rgba(00,00,00,1);
-    -moz-box-shadow: 0 0 100px 101px rgba(00,00,00,1);
+    width: 36px;
+    height: 36px;
 }
 .textarea{
-    display: flex;flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    height: 178px;
 }
 .textarea p{
     color: rgb(253, 250, 255);
@@ -1341,6 +1350,9 @@ input:-webkit-autofill{
     font-family: 'Azeret Mono', monospace;
 }
 @media screen and (max-width: 1280px){
+    *{
+        cursor: unset!important;
+    }
     .start{
         transform: unset;
     }
